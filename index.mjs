@@ -3,7 +3,7 @@ import * as historyModule from 'history';
 import pathToRegexp from 'path-to-regexp';
 import deepmerge from 'deepmerge';
 
-// HACK (to make it work in both rollup and node-js)
+// HACK (to make it work in both rollup and node.js)
 const _history = historyModule.default ? historyModule.default : historyModule;
 
 let history = null;
@@ -206,6 +206,8 @@ export const $NavLink = (props, ...children) =>
   React.createElement(NavLink, props, ...children);
 
 
+export const navigate = (newLocation) => history.push(newLocation);
+
 export default {
   pathMatcher,
   pathSelector,
@@ -214,4 +216,6 @@ export default {
   $StaticUrlProvider,
   $UrlConsumer,
   Link, $Link,
+  NavLink, $NavLink,
+  navigate,
 };
